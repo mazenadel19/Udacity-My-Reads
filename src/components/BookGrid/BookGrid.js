@@ -11,7 +11,7 @@ function BookGrid({ books }) {
           <Book
             title={title}
             author={author}
-            image={imageLinks.thumbnail}
+            image={imageLinks?.thumbnail || imageLinks?.smallThumbnail}
             shelf={shelf}
           />
         </li>

@@ -38,3 +38,14 @@
 .search-books-results {
   padding: 80px 10px 20px;
 }
+
+.search-books h1 {
+  text-align: center;
+}
+
+.search-books img {
+  margin: 0 auto;
+  width: min(800px, 100%);
+  max-height: calc(100vh - 100px);
+  display: block;
+}
