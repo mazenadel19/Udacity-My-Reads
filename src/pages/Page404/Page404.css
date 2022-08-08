@@ -1,0 +1,23 @@
+.page-404 {
+  padding: 10px 20px;
+}
+
+.page-404 a {
+  text-decoration: none;
+  color: #2e7c31;
+}
+
+.page-404 a:hover {
+  text-decoration: underline;
+}
+
+.page-404 .lost {
+  text-align: center;
+}
+
+.page-404 img {
+  margin: 0 auto;
+  width: min(611px, 100%);
+  max-height: calc(100vh - 203px);
+  display: block;
+}

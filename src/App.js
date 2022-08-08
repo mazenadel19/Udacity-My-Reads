@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import * as API from "./BooksAPI";
+import { Route, Routes } from "react-router-dom";
 
 import SearchPage from "./pages/SearchPage/SearchPage";
 import MainPage from "./pages/MainPage/MainPage";
 import "./App.css";
+import Page404 from "./pages/Page404/Page404";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const [myBooks, setMyBooks] = useState([]);
   const isFirst = useRef(true);
 
@@ -24,21 +25,25 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      {showSearchPage ? (
-        <SearchPage
-          setShowSearchpage={setShowSearchpage}
-          showSearchPage={showSearchPage}
-          searchedBooks={[]}
-        />
-      ) : (
-        <MainPage
-          setShowSearchpage={setShowSearchpage}
-          showSearchPage={showSearchPage}
-          books={myBooks}
-        />
-      )}
-    </div>
+    <Routes>
+      <Route
+        element={
+          <SearchPage
+            searchedBooks={[]}
+          />
+        }
+        path={"/search"}
+      />
+      <Route
+        element={
+          <MainPage
+            books={myBooks}
+          />
+        }
+        path={"/"}
+      />
+      <Route element={<Page404 />} path={"*"} />
+    </Routes>
   );
 }
 

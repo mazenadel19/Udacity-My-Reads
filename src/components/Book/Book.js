@@ -3,7 +3,6 @@ import React from "react";
 import "./Book.css";
 
 function Book({ title, author, image, shelf }) {
-
   return (
     <div className="book">
       <div className="book-top">

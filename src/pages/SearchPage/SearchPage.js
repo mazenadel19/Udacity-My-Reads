@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as API from "../../BooksAPI";
 import obiwan from "../../images/obiwan.jpg";
 
 import BooksGrid from "../../components/BookGrid/BookGrid";
 import "./SearchPage.css";
 
-function SearchPage({ setShowSearchpage, showSearchPage, searchedBooks }) {
+function SearchPage() {
   const [searchedResults, setSearchedResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isError, setIsError] = useState(false);
@@ -48,13 +49,12 @@ function SearchPage({ setShowSearchpage, showSearchPage, searchedBooks }) {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <a
-          href="/"
+        <Link
+          to="/"
           className="close-search"
-          onClick={() => setShowSearchpage(!showSearchPage)}
         >
           Close
-        </a>
+        </Link>
         <div className="search-books-input-wrapper">
           <input
             type="text"
