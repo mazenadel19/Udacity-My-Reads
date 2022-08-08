@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import SearchPage from "./Pages/SearchPage/SearchPage";
-import MainPage from "./Pages/MainPage/MainPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import MainPage from "./pages/MainPage/MainPage";
 import "./App.css";
 
 function App() {
