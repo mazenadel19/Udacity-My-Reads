@@ -1,6 +1,7 @@
+import BooksGrid from "../../components/BookGrid/BookGrid";
 import "./SearchPage.css";
 
-function SearchPage({ setShowSearchpage, showSearchPage }) {
+function SearchPage({ setShowSearchpage, showSearchPage, searchedBooks }) {
   return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -16,7 +17,7 @@ function SearchPage({ setShowSearchpage, showSearchPage }) {
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <BooksGrid books={searchedBooks} />
       </div>
     </div>
   );

@@ -13,11 +13,13 @@ function App() {
         <SearchPage
           setShowSearchpage={setShowSearchpage}
           showSearchPage={showSearchPage}
+          searchedBooks={[]}
         />
       ) : (
         <MainPage
           setShowSearchpage={setShowSearchpage}
           showSearchPage={showSearchPage}
+          bookShelves={[]}
         />
       )}
     </div>
