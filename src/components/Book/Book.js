@@ -2,7 +2,8 @@ import BookShelfChanger from "../BookShelfChanger/BookShelfChanger";
 import React from "react";
 import "./Book.css";
 
-function Book({ title, author, image, state }) {
+function Book({ title, author, image, shelf }) {
+
   return (
     <div className="book">
       <div className="book-top">
@@ -11,10 +12,10 @@ function Book({ title, author, image, state }) {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: image,
+            backgroundImage: `url(${image})`,
           }}
         ></div>
-        <BookShelfChanger state={state} />
+        <BookShelfChanger shelf={shelf} />
       </div>
       <div className="book-title">{title}</div>
       <div className="book-authors">{author}</div>

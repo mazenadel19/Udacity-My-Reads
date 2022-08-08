@@ -1,10 +1,10 @@
 import React from "react";
 import "./BookShelfChanger.css";
 
-function BookShelfChanger({ state }) {
+function BookShelfChanger({ shelf }) {
   return (
     <div className="book-shelf-changer">
-      <select>
+      <select defaultValue={shelf}>
         <option value="none" disabled>
           Move to...
         </option>
