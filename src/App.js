@@ -31,7 +31,7 @@ function App() {
   return (
     <Routes>
       <Route
-        element={<SearchPage onShelfChange={onShelfChange} books={myBooks}/>}
+        element={<SearchPage onShelfChange={onShelfChange} books={myBooks} />}
         path={"/search"}
       />
       <Route

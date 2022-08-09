@@ -8,6 +8,7 @@ import "./SearchPage.css";
 
 function SearchPage({ onShelfChange, books }) {
   const [searchedResults, setSearchedResults] = useState([]);
+  const [searchedBooks, setSearchedBooks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isError, setIsError] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -17,17 +18,11 @@ function SearchPage({ onShelfChange, books }) {
       const findBooks = async () => {
         setIsSearching(true);
         const data = await API.search(inputValue);
+
         if (data.error) {
           setIsError(true);
         } else {
           setIsError(false);
-          data.forEach((searchBook) => {
-            books.forEach((book) => {
-              if (book.id === searchBook.id) {
-                searchBook.shelf = book.shelf;
-              }
-            });
-          });
           setSearchedResults(data);
         }
         setIsSearching(false);
@@ -41,12 +36,24 @@ function SearchPage({ onShelfChange, books }) {
         clearTimeout(timer);
       };
     }
-  }, [books, inputValue]);
+  }, [inputValue]);
+
+  useEffect(() => {
+    const dataClone = structuredClone(searchedResults);
+    dataClone.forEach((searchBook) => {
+      books.forEach((book) => {
+        if (book.id === searchBook.id) {
+          searchBook.shelf = book.shelf;
+        }
+      });
+    });
+    setSearchedBooks(dataClone);
+  }, [books, searchedResults]);
 
   const output = isError ? (
     <img src={obiwan} alt="couldn't find your book" />
   ) : (
-    <BooksGrid books={searchedResults} onShelfChange={onShelfChange} />
+    <BooksGrid books={searchedBooks} onShelfChange={onShelfChange} />
   );
 
   const search = isSearching ? <h1>Searching ... 🧐🧐</h1> : output;
