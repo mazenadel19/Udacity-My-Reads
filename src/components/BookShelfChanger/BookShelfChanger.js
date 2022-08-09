@@ -1,10 +1,22 @@
 import React from "react";
+import * as API from "../../BooksAPI";
+
 import "./BookShelfChanger.css";
 
-function BookShelfChanger({ shelf }) {
+function BookShelfChanger({ book, shelf, onShelfChange }) {
+  
+  function handleShelfChange(e) {
+    const updateBook = async () => {
+      await API.update(book, e.target.value);
+      const data = await API.getAll();
+      onShelfChange(data);
+    };
+    updateBook();
+  }
+
   return (
     <div className="book-shelf-changer">
-      <select defaultValue={shelf}>
+      <select defaultValue={shelf} onChange={handleShelfChange}>
         <option value="none" disabled>
           Move to...
         </option>

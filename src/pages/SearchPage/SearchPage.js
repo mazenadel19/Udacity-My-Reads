@@ -6,7 +6,7 @@ import obiwan from "../../images/obiwan.jpg";
 import BooksGrid from "../../components/BookGrid/BookGrid";
 import "./SearchPage.css";
 
-function SearchPage() {
+function SearchPage({ onShelfChange }) {
   const [searchedResults, setSearchedResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isError, setIsError] = useState(false);
@@ -39,7 +39,7 @@ function SearchPage() {
   const output = isError ? (
     <img src={obiwan} alt="couldn't find your book" />
   ) : (
-    <BooksGrid books={searchedResults} />
+    <BooksGrid books={searchedResults} onShelfChange={onShelfChange} />
   );
 
   const search = isSearching ? <h1>Searching ... 🧐🧐</h1> : output;
@@ -49,10 +49,7 @@ function SearchPage() {
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <Link
-          to="/"
-          className="close-search"
-        >
+        <Link to="/" className="close-search">
           Close
         </Link>
         <div className="search-books-input-wrapper">

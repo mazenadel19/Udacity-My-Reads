@@ -10,7 +10,10 @@ const Page404 = () => {
     <Fragment>
       <Header />
       <div className="page-404">
-        <Link to="/"> ⬅️ Take me home</Link>
+        <Link to="/">
+          <span className="go-back"></span>
+          Take me home
+        </Link>
         <div className="lost">
           <img src={travolta} alt="a man looking around" />
           <h1>Who are you? How did you get here?? 😕</h1>

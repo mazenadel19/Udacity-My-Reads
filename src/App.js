@@ -24,22 +24,18 @@ function App() {
     }
   }, []);
 
+  function onShelfChange(data) {
+    setMyBooks(data);
+  }
+
   return (
     <Routes>
       <Route
-        element={
-          <SearchPage
-            searchedBooks={[]}
-          />
-        }
+        element={<SearchPage onShelfChange={onShelfChange} />}
         path={"/search"}
       />
       <Route
-        element={
-          <MainPage
-            books={myBooks}
-          />
-        }
+        element={<MainPage books={myBooks} onShelfChange={onShelfChange} />}
         path={"/"}
       />
       <Route element={<Page404 />} path={"*"} />

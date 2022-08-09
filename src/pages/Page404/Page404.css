@@ -4,7 +4,22 @@
 
 .page-404 a {
   text-decoration: none;
-  color: #2e7c31;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.go-back {
+  display: inline-block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url("../../icons/arrow-back.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
 }
 
 .page-404 a:hover {
@@ -18,6 +33,6 @@
 .page-404 img {
   margin: 0 auto;
   width: min(611px, 100%);
-  max-height: calc(100vh - 203px);
+  max-height: calc(100vh - 232px);
   display: block;
 }

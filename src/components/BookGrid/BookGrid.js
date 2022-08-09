@@ -3,17 +3,12 @@ import Book from "../Book/Book";
 
 import "./BookGrid.css";
 
-function BookGrid({ books }) {
+function BookGrid({ books, onShelfChange }) {
   return (
     <ol className="books-grid">
-      {books.map(({ shelf, author, title, imageLinks, id }) => (
-        <li key={id}>
-          <Book
-            title={title}
-            author={author}
-            image={imageLinks?.thumbnail || imageLinks?.smallThumbnail}
-            shelf={shelf}
-          />
+      {books.map((book) => (
+        <li key={book.id}>
+          <Book book={book} onShelfChange={onShelfChange} />
         </li>
       ))}
     </ol>
