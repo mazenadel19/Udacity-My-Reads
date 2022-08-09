@@ -3,7 +3,7 @@ import React from "react";
 import "./Book.css";
 
 function Book({ book, onShelfChange }) {
-  const { shelf, author, title, imageLinks } = book;
+  const { shelf, authors, title, imageLinks } = book;
   return (
     <div className="book">
       <div className="book-top">
@@ -24,7 +24,7 @@ function Book({ book, onShelfChange }) {
         />
       </div>
       <div className="book-title">{title}</div>
-      <div className="book-authors">{author}</div>
+      <div className="book-authors">{authors}</div>
     </div>
   );
 }

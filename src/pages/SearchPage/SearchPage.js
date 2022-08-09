@@ -6,7 +6,7 @@ import obiwan from "../../images/obiwan.jpg";
 import BooksGrid from "../../components/BookGrid/BookGrid";
 import "./SearchPage.css";
 
-function SearchPage({ onShelfChange }) {
+function SearchPage({ onShelfChange, books }) {
   const [searchedResults, setSearchedResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isError, setIsError] = useState(false);
@@ -21,6 +21,13 @@ function SearchPage({ onShelfChange }) {
           setIsError(true);
         } else {
           setIsError(false);
+          data.forEach((searchBook) => {
+            books.forEach((book) => {
+              if (book.id === searchBook.id) {
+                searchBook.shelf = book.shelf;
+              }
+            });
+          });
           setSearchedResults(data);
         }
         setIsSearching(false);
@@ -34,7 +41,7 @@ function SearchPage({ onShelfChange }) {
         clearTimeout(timer);
       };
     }
-  }, [inputValue]);
+  }, [books, inputValue]);
 
   const output = isError ? (
     <img src={obiwan} alt="couldn't find your book" />
